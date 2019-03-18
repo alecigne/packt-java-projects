@@ -31,3 +31,36 @@ With Java 11, add this code to use Maven:
     </plugins>
   </build>
 #+end_src
+
+*** Java
+
+**** Variables
+
+In Java 11, with *local variable type inference*, you can type (for a
+local variable, as the name suggests):
+
+#+begin_src java
+  var n = names.length;
+#+end_src
+
+**** Initializer block
+
+Initializer blocks don't need to be static. An initializer block is
+executed when the instance is created. More accurately, the code is
+compiled into the constructor and is executed with the constructor.
+
+**** Nested classes
+
+Terminology:
+
+- Nested classes are divided into two categories: static and
+  non-static. A non-static nested class is also called an inner
+  class. These are class declarations.
+
+- Local classes are inside a method, a constructor or an init
+  block. These are class declarations.
+
+- Anonymous classes are a short form of a nested/inner/local
+  class. These are expressions.
+
+- To be continued...
