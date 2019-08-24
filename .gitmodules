@@ -1,0 +1,3 @@
+[submodule "packt-source-code"]
+	path = packt-source-code
+	url = git@github.com:alecigne/Java-Projects-Second-Edition.git
