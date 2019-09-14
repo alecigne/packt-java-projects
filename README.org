@@ -8,6 +8,39 @@ My repo and notes for the [[https://isbnsearch.org/isbn/9781789131895][Java Proj
 
 ** Chapter 2
 
+*** Ant
+
+See the ~antHelloWorld~ project.
+
+- In Eclipse, the project can be imported with ~Import > Projects from
+  Folder or Archive~.
+
+- Then ~Run As > Ant Build~ will build the project as specified by the
+  ~build.xml~ file.
+
+- ~java -jar build/jar/HelloWorld.jar~ is not enough to execute the
+  project :
+
+  #+begin_example
+    no main manifest attribute, in build/jar/HelloWorld.jar
+  #+end_example
+
+  We have to modify the default manifest to add an entry point, like
+  Eclipse would propose if we used the ~Export > Jar file~
+  functionality.
+
+  For Ant, this will do :
+
+  #+begin_src xml
+    <target name="jar" depends="dirs,compile">
+      <jar destfile="${jarDir}/HelloWorld.jar" basedir="${classesDir}">
+        <manifest>
+          <attribute name="Main-Class" value="HelloWorld"/>
+        </manifest>
+      </jar>
+    </target>
+  #+end_src
+
 *** Maven
 
 =mvn archetype:generate= to generate a project; good alternative to
