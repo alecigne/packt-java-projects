@@ -1,27 +1,35 @@
 <project name="HelloWorld" default="jar" basedir=".">
-<description>
+	<description>
     This is a sample HelloWorld project build file.
 </description>
-    <property name="buildDir" value="build"/>
-    <property name="srcDir" value="src"/>
-    <property name="classesDir" value="${buildDir}/classes"/>
-    <property name="jarDir" value="${buildDir}/jar"/>
+	<property name="src.dir" value="src" />
 
-    <target name="dirs">
-        <mkdir dir="${classesDir}"/>
-        <mkdir dir="${jarDir}"/>
-    </target>
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
 
-    <target name="compile" depends="dirs">
-        <javac srcdir="${srcDir}" destdir="${classesDir}"/>
-    </target>
+	<property name="main-class" value="HelloWorld" />
 
-	<target name="jar" depends="dirs,compile">
-	  <jar destfile="${jarDir}/HelloWorld.jar" basedir="${classesDir}">
-	    <manifest>
-	      <attribute name="Main-Class" value="HelloWorld"/>
-	    </manifest>
-	  </jar>
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/HelloWorld.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+		<java jar="${jar.dir}/${ant.project.name}.jar" fork="true" />
 	</target>
 
 </project>

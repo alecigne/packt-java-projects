@@ -10,7 +10,7 @@ My repo and notes for the [[https://isbnsearch.org/isbn/9781789131895][Java Proj
 
 *** Ant
 
-See the ~antHelloWorld~ project.
+See the ~antHelloWorld~ project in my source code.
 
 - In Eclipse, the project can be imported with ~Import > Projects from
   Folder or Archive~.
@@ -40,6 +40,10 @@ See the ~antHelloWorld~ project.
       </jar>
     </target>
   #+end_src
+
+- Let's enhance the ~build.xml~ file from the book: let's create a
+  ~run~ and a ~clean~ target, and make directories only in association
+  to a task.
 
 *** Maven
 
