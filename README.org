@@ -162,6 +162,17 @@ useless newlines).
 Importing the parent project with Eclipse will also import the
 subprojects and create a working set.
 
+*** Unit test
+
+#+begin_quote
+Unit tests are not used to find bugs.
+#+end_quote
+
+#+begin_quote
+A test case is readable if you look at it and in 15 seconds you can
+tell what it does.
+#+end_quote
+
 * TODOs
 
 - [ ] [ch02] Study comments about Java syntax
