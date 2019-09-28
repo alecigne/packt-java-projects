@@ -101,3 +101,68 @@ Terminology:
   class. These are expressions.
 
 - To be continued...
+
+** Chapter 3
+
+*** ~Comparable~ interface and SRP
+
+A class implementing the ~Comparable~ interface might violate the
+SRP. This is why ~Collections.sort~ also provides a ~sort~ method that
+takes two arguments: the list to be sorted and an object implementing
+the ~Comparator~ interface.
+
+*** Set up a Maven multimodule project
+
+Here I will recreate the structure of the ~genericsort~ multimodule
+Maven project from the book (p112-115).
+
+Let's start with a [[https://stackoverflow.com/a/17981350][SO]] answer.
+
+This will generate the parent project:
+
+#+begin_src sh
+  mvn archetype:generate -B \
+      -DarchetypeGroupId=org.codehaus.mojo.archetypes \
+      -DarchetypeArtifactId=pom-root \
+      -DarchetypeVersion=RELEASE \
+      -DgroupId=net.lecigne.javaprojects \
+      -DartifactId=SortChapter03
+#+end_src
+
+We want these modules in the parent POM:
+
+#+begin_src xml
+  <modules>
+    <module>SortSupportClasses</module>
+    <module>SortInterface</module>
+    <module>bubble</module>
+    <module>quick</module>
+    <module>Main</module>
+  </modules>
+#+end_src
+
+The modules will be added using this command:
+
+#+begin_src sh
+  declare -a mavenModules=("SortSupportClasses" "SortInterface" "bubble" "quick" "Main")
+
+  for mavenModule in ${mavenModules}; do 
+      mvn archetype:generate -B \
+          -DarchetypeGroupId=org.apache.maven.archetypes \
+          -DarchetypeArtifactId=maven-archetype-quickstart \
+          -DarchetypeVersion=RELEASE \
+          -DgroupId=net.lecigne.javaprojects \
+          -DartifactId=${mavenModule}
+  done
+#+end_src
+
+Note that Maven updates the parent POM (in my case, it also adds
+useless newlines).
+
+Importing the parent project with Eclipse will also import the
+subprojects and create a working set.
+
+* TODOs
+
+- [ ] [ch02] Study comments about Java syntax
+- [ ] [ch03] Study comments about algorithms
