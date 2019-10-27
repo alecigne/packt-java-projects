@@ -173,6 +173,11 @@ A test case is readable if you look at it and in 15 seconds you can
 tell what it does.
 #+end_quote
 
+*** Reimplementing everything in a single module
+
+In ~SimpleSortChapter03~ I implement the code from Chapter03 without
+the confusing and useless multimodule structure.
+
 * TODOs
 
 - [ ] [ch02] Study comments about Java syntax
